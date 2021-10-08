@@ -1,0 +1,29 @@
+.bg-white {
+    background-color: white;
+}
+
+.dropdown-menu-macos {
+    gap: .25rem;
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+.dropdown-menu-macos .dropdown-item {
+    border-radius: .25rem;
+}
+
+.is {
+    font-size: 1.5em;
+}
+
+@media only screen and (min-width: 400px) {
+    body {
+        padding-top: 11.5rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    body {
+        padding-top: 6.5rem;
+    }
+}

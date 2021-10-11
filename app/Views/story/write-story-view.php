@@ -1,5 +1,6 @@
 <main class="container">
     <form action="<?= base_url('ceritaku/save'); ?>" method="post">
+    <?= csrf_field() ?>
         <div>
             <input type="text" name="title" placeholder="Tulis Judul Cerita" class="form-control">
         </div>

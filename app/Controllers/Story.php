@@ -11,14 +11,15 @@ class Story extends BaseController
     public function myStory()
     {
 
+        $model = new StoryModel();
+        
         // if username in cookie is not available go back to login
-        if (!isset($_COOKIE['username'])) {
+        if (!$this->checkUsername()) {
             return redirect()->route('signout');
         }
 
         $username = $_COOKIE['username'];
 
-        $model = new StoryModel();
         $query = $model->getWhere(['username' => $username]);
         // var_dump($query->getRowArray());die();
 
@@ -32,6 +33,10 @@ class Story extends BaseController
 
     public function newStory()
     {
+        if (!$this->checkUsername()) {
+            return redirect()->route('signout');
+        }
+        
         echo view('templates/head');
         echo view('templates/navbar');
         echo view('story/write-story-view');
@@ -96,5 +101,20 @@ class Story extends BaseController
         echo view('story/read-view', $data);
         echo view('templates/footer');
 
+    }
+
+    public function checkUsername()
+    {
+        $model = new StoryModel();
+        $user = $_COOKIE['username'];
+
+        $query = $model->checkUsername($user);
+        $username = $query->getRowArray();
+
+        if ($username) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

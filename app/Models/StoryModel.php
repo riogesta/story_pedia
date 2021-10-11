@@ -22,4 +22,10 @@ class StoryModel extends Model
         $this->db->query($sql, [$title, $story, $date, $id]);
     }
 
+    public function checkUsername($user)
+    {
+        $sql = "SELECT username FROM tb_user WHERE username = ?";
+        return $this->db->query($sql, [$user]);
+    }
+
 }

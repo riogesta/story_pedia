@@ -38,6 +38,34 @@ class Story extends BaseController
         echo view('templates/footer');
     }
 
+    public function editStory()
+    {
+        $model = new StoryModel();
+
+        if (!isset($_POST['edit'])) {
+            $id = $this->request->getPost('id_story');
+    
+            $query = $model->getWhere(['id_story' => $id]);
+            $data['story'] = $query->getRowArray();
+    
+            echo view('templates/head');
+            echo view('templates/navbar');
+            echo view('story/edit-story-view', $data);
+            echo view('templates/footer');
+
+        } else {
+
+            $id = $this->request->getPost('id');
+            $title =  $this->request->getPost('title');
+            $story = $this->request->getPost('editor1');
+            $date = '00/00/0000';
+
+            $model->editStory($id, $title, $story, $date);
+            return redirect()->route('ceritaku');                        
+            // var_dump($data);
+        }
+    }
+
     public function saveStory()
     {
         $model = new StoryModel();

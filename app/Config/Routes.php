@@ -44,7 +44,9 @@ $routes->get('signout','Signin::signout');
 // ceritaku
 $routes->get('ceritaku','Story::myStory');
 $routes->get('ceritaku/baru','Story::newStory');
+
 $routes->post('ceritaku/save','Story::saveStory');
+$routes->post('ceritaku/edit','Story::editStory');
 
 $routes->get('baca/(:segment)','Story::readStory/$1');
 

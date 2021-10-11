@@ -125,8 +125,12 @@ class Signin extends BaseController
 
     public function signout()
     {
+        // destroy session
         $session = session();
         $session->remove('status');
+        // delete cookie
+        setcookie("username", 'false');
+
         return redirect()->route('/');
     }
 

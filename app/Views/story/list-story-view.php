@@ -16,7 +16,11 @@
                 <div class="text-muted">
                     02/10/21
                     <div class="text-end">
-                        <a href="#" class="badge bg-primary rounded-pill">Edit</a>
+                        <form action="<?= base_url('ceritaku/edit');?>" method="post">
+                            <?= csrf_field() ?>
+                            <input type="hidden" name="id_story" value="<?= $story['id_story']?>">
+                            <button class="btn badge bg-primary rounded-pill">Edit</button>
+                        </form>
                     </div>
                 </div>
             </li>
